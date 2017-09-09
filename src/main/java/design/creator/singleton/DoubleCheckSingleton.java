@@ -1,0 +1,23 @@
+package design.creator.singleton;
+
+/**
+ * Created by jianweilin on 2017/9/3.
+ */
+public class DoubleCheckSingleton {
+    private static volatile DoubleCheckSingleton singleton;
+
+    private  DoubleCheckSingleton(){}
+
+    public static DoubleCheckSingleton getInstance(){
+        if(singleton == null){
+            synchronized (DoubleCheckSingleton.class){
+                if(singleton == null){
+                    singleton = new DoubleCheckSingleton();
+                }
+            }
+        }
+        return singleton;
+    }
+
+
+}
